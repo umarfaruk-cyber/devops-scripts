@@ -1,4 +1,7 @@
 #!/bin/bash
+# Author: Faruk
+# Description: System information reports
+
 hostname=$(hostname)
 current_user=$(whoami)
 current_date=$(date)
