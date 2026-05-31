@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Author: Faruk
+#Description: use functions script
+
 # Load the functions library
 source ~/scripts/exercises/functions_lib.sh
 
