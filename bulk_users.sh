@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Author: Faruk
+# Description: Bulk users Creation scripts
+
 # Arrays of users to create
 users=("alice" "bob" "charlie" "diana" "eve")
 
