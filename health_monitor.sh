@@ -2,6 +2,7 @@
 
 # Author: Faruk
 # Description: Health monitor report
+# Date: Did this 31th of may,2026. 10:32:45
 
 LOG_FILE="/home/$(whoami)/health_monitor.log"
 CHECK_INTERVAL=10
