@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Author: Faruk
+#Description: Backup system reports
+
 # ==== CONFIGURATION ====#
 
 BACKUP_DIR="/home/$(whoami)/backups"
