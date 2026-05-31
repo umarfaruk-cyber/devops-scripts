@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Author: Faruk
+# Description: Health monitor report
+
 LOG_FILE="/home/$(whoami)/health_monitor.log"
 CHECK_INTERVAL=10
 DISK_THRESHOLD=80
