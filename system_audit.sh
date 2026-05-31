@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Author: Faruk
+#Description: System audit script report
+
 # ===== CONFIGURATION =====
 REPORT_DIR=/home/$(whoami)/reports
 REPORT_FILE=$REPORT_DIR/audit_$(date '+%Y-%m-%d')
