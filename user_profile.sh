@@ -1,4 +1,8 @@
 #!/bin/bash
+
+#Author: Faruk
+#Description: User profile script report
+
 echo "==== USER PROFILE CREATOR ===="
 read -p "Enter your first name: " firstname
 read -p "Enter your last name: " lastname
