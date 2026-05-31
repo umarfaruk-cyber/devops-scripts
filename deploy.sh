@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Author: Faruk
+# Description: deployment sript
+
 # ==== CONFIG ====
 APP_NAME="myapp"
 DEPLOY_DIR="/home/$(whoami)/deployments"
