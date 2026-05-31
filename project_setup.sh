@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Author: Faruk
+# Description: Project setup script
+
 read -p "Enter project name: " project_name
 read -p "Enter environment (dev/staging/prod): " environment
 
