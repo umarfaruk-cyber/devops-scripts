@@ -1,0 +1,81 @@
+yaml
+
+name: Devops Scripts CI Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-scripts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: verify all scripts exist
+        run: |
+          echo "Checking all scripts are present..."
+          scripts=(
+            "sysinfo.sh"
+            "user_profile.sh"
+            "bulk_users.sh"
+            "backup_system.sh"
+            "health_monitor.sh"
+            "deploy.sh"
+            "system_audit.sh"
+           )
+            for script in "${scripts[@]}"; do
+              if [ -f "script" ]; then
+                echo "OK: $script exists"
+              else
+                echo "MISSING: $script"
+                exit 1
+              fi
+            done
+
+      - name: Check scripts are executable
+        run: |
+          echo "Checking scripts permissions..."
+          chmod +x *.sh
+          for script in *.sh; do
+            if [ -x "$script" ]; then
+              echo "OK: $script is executable..."
+            else
+              echo "FAILED: $script is not executable"
+              exit 1
+            fi
+          done
+
+      - name: Validate bash syntax
+        run: |
+          echo "Validating bash syntax for all scripts..."
+          error_found=0
+          for script in *.sh; do
+            if bash -n "$script"; then
+              echo "OK: $script syntax is valid"
+            else
+              echo "SYNTAX ERROR: $script"
+              error_found=1
+            fi
+          done
+          if [ $error_found -eq 1 ]; then
+            echo "Syntax errors found - pipeline failed"
+            exit 1
+          fi
+
+      - name: Run sysinfo script
+        run: |
+          echo "Running sysinfo.sh..."
+          chmod +x sysinfo.sh
+          ./sysinfo.sh
+
+      - name: Pipeine complete
+        run: |
+          echo "=============================="
+          echo "All checks passed successfully"
+          echo "Scripts verified: $(ls *.sh | wc -l)"
+          echo "=============================="
