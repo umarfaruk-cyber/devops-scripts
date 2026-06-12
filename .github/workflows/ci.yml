@@ -23,7 +23,7 @@ jobs:
       - name: verify all scripts exist
         run: |
           echo "Checking all scripts are present..."
-          for script in sysinfo.sh user_profile.sh bulk_users.sh backup_system.sh health_monitor.sh deploy.sh system_audit.sh; do
+          for script in sysinfo.sh user_profile.sh bulk_users.sh backup_system.sh health_monitor.sh deploy.sh deploy_manager.sh system_audit.sh; do
             if [ -f "$script" ]; then
               echo "OK: $script exists"
             else
@@ -67,6 +67,28 @@ jobs:
           echo "Running sysinfo.sh..."
           chmod +x sysinfo.sh
           ./sysinfo.sh
+
+      - name: Check deploy_manager version file
+        run: |
+          echo "Verifying deploy_manager.sh structure..."
+          if grep -q "bump_version" deploy_manager.sh; then
+            echo "OK: bump version function found"
+          else
+            echo "MISSING: bump version function not found"
+            exit 1
+          fi
+          if grep -q "deploy()" deploy_manager.sh; then
+            echo "OK: deploy function found"
+          else
+            echo "MISSING: deploy function not found"
+            exit 1
+          fi
+          if grep -q "rollback()" deploy_manager.sh; then
+            echo "OK: rollback function found"
+          else
+            echo "MISSING: rollback function not found"
+            exit 1
+          fi
 
       - name: Pipeine complete
         run: |
