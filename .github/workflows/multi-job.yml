@@ -14,7 +14,7 @@ jobs:
         run: |
           echo "Running lint checks..."
           for script in *.sh; do
-            bash -n "script" && echo "OK: $script" || exit 1
+            bash -n "$script" && echo "OK: $script" || exit 1
           done
           echo "All scripts passed linting"
 
