@@ -7,7 +7,7 @@ on:
 jobs:
   lint:
     name: Lint scripts
-    runs-on: ubuntu latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Lint all scripts
@@ -20,7 +20,7 @@ jobs:
 
   test:
     name: Run tests
-    runs-on: ubuntu latest
+    runs-on: ubuntu-latest
     needs: lint
     steps:
       - uses: actions/checkout@v3
@@ -33,7 +33,7 @@ jobs:
 
   security-check:
     name: Security Scan
-    runs-on: ubuntu latest
+    runs-on: ubuntu-latest
     needs: lint
     steps:
       - uses: actions/checkout@v3
@@ -48,7 +48,7 @@ jobs:
 
   deploy-dev:
     name: Deploy to Development
-    runs-on: ubuntu latest
+    runs-on: ubuntu-latest
     needs: [test, security-check]
     steps:
       - uses: actions/checkout@v3
@@ -65,7 +65,7 @@ jobs:
 
   notify:
     name: Pipeline Summary
-    runs-on: ubuntu latest
+    runs-on: ubuntu-latest
     needs: deploy-dev
     if: always()
     steps:
